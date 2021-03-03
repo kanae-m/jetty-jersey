@@ -1,0 +1,23 @@
+<configuration>
+
+  <property name="pattern" value="%d %-5p [%t] %C{2} %F:%L - %m%n"/>
+  <property name="level" value="INFO"/>
+
+  <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+    <resetJUL>true</resetJUL>
+  </contextListener>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>${level}</level>
+    </filter>
+    <encoder>
+      <pattern>${pattern}</pattern>
+    </encoder>
+  </appender>
+
+  <root level="${level}">
+    <appender-ref ref="STDOUT"/>
+  </root>
+
+</configuration>
